@@ -72,13 +72,19 @@ This project implements a **high-precision closed-loop position controller** for
 <details>
 
 ### System Architecture
-![Architecture](Architecture.jpeg)
+<div align="center">
+<img src="Architecture.jpeg" alt="System Block Diagram" width="800"/>
+</div>
 
 ### Control Flow Diagram
-![Sample Flow Diagram](Sample_flow_diagram.png)
+<div align="center">
+<img src="Sample_flow_diagram.png" alt="Sample Flow Diagram" width="800"/>
+</div>
 
 ### Circuit Schematic
-![Schematic Diagram](Schematic_Diagram_for_project_ref.png)
+<div align="center">
+<img src="Schematic_Diagram_for_project_ref.png" alt="Schematic Diagram" width="800"/>
+</div>
 
 </details>
 
