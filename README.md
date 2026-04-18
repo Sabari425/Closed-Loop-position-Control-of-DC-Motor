@@ -69,7 +69,6 @@ This project implements a **high-precision closed-loop position controller** for
 
 </div>
 
-<details>
 
 ### System Architecture
 <div align="center">
@@ -85,8 +84,6 @@ This project implements a **high-precision closed-loop position controller** for
 <div align="center">
 <img src="Schematic_Diagram_for_project_ref.png" alt="Schematic Diagram" width="800"/>
 </div>
-
-</details>
 
 ---
 
