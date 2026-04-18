@@ -67,25 +67,6 @@ This project implements a **high-precision closed-loop position controller** for
 
 ---
 
-## Live Demo & Documentation
-
-<div>
-
-### 📹 Quick Demo
-[▶️ Watch DEMO.mp4](DEMO.mp4)
-
-### 📹 Extended Demo
-[▶️ Watch Position_Control_of_Robotic_arm_video.mp4](Position_Control_of_Robotic_arm_video.mp4)
-
-### Project Presentation
-[📽️ Download PowerPoint Presentation](Position%20Control%20of%20Robotic%20arm.pptx)
-
-### 📖 Full Documentation
-[📄 Download PDF Documentation](Position%20Control%20of%20Robotic%20arm.pdf)
-
-</div>
-
-
 ### System Architecture
 <div align="center">
 <img src="Architecture.jpeg" alt="System Block Diagram" width="800"/>
@@ -93,7 +74,7 @@ This project implements a **high-precision closed-loop position controller** for
 
 ### Control Flow Diagram
 <div align="center">
-<img src="Sample_flow_diagram.png" alt="Sample Flow Diagram" width="800"/>
+<img src="Sample_flow_diagram.jpeg" alt="Sample Flow Diagram" width="800"/>
 </div>
 
 ### Circuit Schematic
