@@ -51,57 +51,6 @@ This project implements a **high-precision closed-loop position controller** for
 
 ---
 
-## 📂 Repository Structure
-📁 position-control/
-│
-├── 📁 GUI/ # Python GUI Application
-│ ├── main.py # PyQt6 application entry point
-│ ├── serial_worker.py # Threaded serial communication handler
-│ ├── plot_widget.py # Real-time matplotlib visualization
-│ ├── pid_tuner.py # Interactive PID tuning panel
-│ ├── styles.qss # Modern UI styling (Qt stylesheet)
-│ └── requirements.txt # Python package dependencies
-│
-├── 📁 firmware/ # ESP32-S3 Embedded Firmware
-│ ├── src/
-│ │ ├── main.cpp # Entry point and main control loop
-│ │ ├── pid_controller.cpp # PID algorithm implementation
-│ │ ├── as5600.cpp # AS5600 encoder I2C driver
-│ │ ├── motor_driver.cpp # L298N PWM motor control
-│ │ └── serial_handler.cpp # UART communication protocol
-│ ├── include/
-│ │ ├── pid_controller.h # PID class declaration
-│ │ ├── as5600.h # Encoder driver header
-│ │ ├── motor_driver.h # Motor driver header
-│ │ ├── serial_handler.h # Serial protocol header
-│ │ └── config.h # Pin definitions and constants
-│ └── platformio.ini # PlatformIO project configuration
-│
-├── 🖼️ Architecture.jpeg # Complete system block diagram
-├── 🎬 DEMO.mp4 # Quick demonstration video
-├── 📄 LICENSE # MIT License terms and conditions
-├── 📊 Position Control of Robotic arm.pdf # Comprehensive project documentation
-├── 📽️ Position Control of Robotic arm.pptx # Project presentation slides
-├── 🎥 Position_Control_of_Robotic_arm_video.mp4 # Extended demonstration video
-├── 📘 README.md # This documentation file
-├── 🔄 Sample_flow_diagram.png # Control algorithm flowchart
-└── ⚡ Schematic_Diagram_for_project_ref.png # Circuit wiring reference diagram
-
-
-### 📁 Key File Descriptions
-
-| File | Description |
-|:-----|:------------|
-| `GUI/main.py` | Main GUI application with real-time plotting and control panels |
-| `firmware/src/main.cpp` | ESP32-S3 firmware entry point with 100Hz control loop |
-| `Architecture.jpeg` | Visual representation of complete system signal flow |
-| `Schematic_Diagram_for_project_ref.png` | Pin-to-pin wiring reference for hardware assembly |
-| `Sample_flow_diagram.png` | Step-by-step control algorithm decision flowchart |
-| `Position Control of Robotic arm.pdf` | Full project report with theory, implementation, and results |
-| `Position Control of Robotic arm.pptx` | Presentation-ready project summary |
-
----
-
 ## 🎬 Live Demo & Documentation
 
 <div align="center">
