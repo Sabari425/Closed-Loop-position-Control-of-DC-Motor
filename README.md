@@ -16,7 +16,7 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 - [Overview](#-overview)
 - [Repository Structure](#-repository-structure)
 - [Live Demo & Documentation](#-live-demo--documentation)
@@ -32,11 +32,11 @@
 
 ---
 
-## 🎯 Overview
+## Overview
 
 This project implements a **high-precision closed-loop position controller** for a standard DC gear motor, transforming it into a **Smart Joint** suitable for robotic applications. The system uses an **ESP32-S3** microcontroller as the computational core, an **AS5600 12-bit magnetic encoder** for absolute position feedback, and an **L298N motor driver** for PWM-based actuation.
 
-### 🎯 Key Objectives
+### Key Objectives
 - Achieve sub-degree positioning accuracy
 - Minimize overshoot and settling time
 - Compensate for mechanical non-linearities (backlash, friction)
@@ -51,9 +51,9 @@ This project implements a **high-precision closed-loop position controller** for
 
 ---
 
-## 🎬 Live Demo & Documentation
+## Live Demo & Documentation
 
-<div align="center">
+<div>
 
 ### 📹 Quick Demo
 [▶️ Watch DEMO.mp4](DEMO.mp4)
@@ -61,7 +61,7 @@ This project implements a **high-precision closed-loop position controller** for
 ### 📹 Extended Demo
 [▶️ Watch Position_Control_of_Robotic_arm_video.mp4](Position_Control_of_Robotic_arm_video.mp4)
 
-### 📊 Project Presentation
+### Project Presentation
 [📽️ Download PowerPoint Presentation](Position%20Control%20of%20Robotic%20arm.pptx)
 
 ### 📖 Full Documentation
@@ -70,7 +70,6 @@ This project implements a **high-precision closed-loop position controller** for
 </div>
 
 <details>
-<summary><b>📸 Click to view diagrams and schematics</b></summary>
 
 ### System Architecture
 ![Architecture](Architecture.jpeg)
@@ -85,7 +84,7 @@ This project implements a **high-precision closed-loop position controller** for
 
 ---
 
-## 📊 Key Performance Metrics
+## Key Performance Metrics
 
 <div align="center">
 
@@ -108,35 +107,9 @@ This project implements a **high-precision closed-loop position controller** for
 <img src="Architecture.jpeg" alt="System Block Diagram" width="800"/>
 </div>
 
-### 📡 Signal Flow
-┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
-│ │ │ │ │ │
-│ USER INPUT │────────▶│ ESP32-S3 │────────▶│ L298N DRIVER │
-│ (Target Angle) │ │ (PID Controller)│ │ (PWM Output) │
-│ │ │ │ │ │
-└─────────────────┘ └────────┬────────┘ └────────┬────────┘
-│ │
-│ I2C (SDA/SCL) │ PWM Signal
-│ │
-▼ ▼
-┌─────────────────┐ ┌─────────────────┐
-│ │ │ │
-│ AS5600 │◀────────│ DC GEAR MOTOR │
-│ ENCODER │ │ with Magnet │
-│ (12-bit) │ │ │
-└─────────────────┘ └─────────────────┘
-│
-│ Absolute Angle Feedback
-│ (0.087° resolution)
-▼
-┌─────────────────┐
-│ CLOSED LOOP │
-│ FEEDBACK │
-│ (Error = T-P) │
-└─────────────────┘
+---
 
-
-### 🔄 Control Flow Diagram
+### Control Flow Diagram
 
 <div align="center">
 <img src="Sample_flow_diagram.png" alt="Control Flow Diagram" width="600"/>
@@ -188,16 +161,15 @@ This project implements a **high-precision closed-loop position controller** for
 
 ---
 
-## 🧮 Control Algorithm
+## Control Algorithm
 
-### 📐 PID Controller Equation
+### PID Controller Equation
 
 <div align="center">
-┌─────────────────────────────────────────────────────────────────┐
-│ │
-│ u(t) = Kp·e(t) + Ki·∫e(t)dt + Kd·(de/dt) │
-│ │
-│ Where: │
+
+u(t) = Kp·e(t) + Ki·∫e(t)dt + Kd·(de/dt)
+
+where,
 │ ───────────────────────────────────────────────────────────── │
 │ u(t) = Control output (PWM value, range: -255 to +255) │
 │ e(t) = Error = Target Angle - Measured Angle │
@@ -205,8 +177,6 @@ This project implements a **high-precision closed-loop position controller** for
 │ Ki = Integral gain (0 - disabled) │
 │ Kd = Derivative gain (0.35) │
 │ dt = Sample time (10ms = 100Hz) │
-│ │
-└─────────────────────────────────────────────────────────────────┘
 
 </div>
 
@@ -220,7 +190,7 @@ This project implements a **high-precision closed-loop position controller** for
 | **Sample Time** | 10ms | Control loop frequency (100 Hz) | Based on motor time constant and encoder speed |
 | **Output Limit** | ±255 | PWM range (0-255 forward, 0-255 reverse) | Hardware PWM resolution limit |
 
-### 🛡️ Advanced Control Features
+### Advanced Control Features
 
 | Feature | Implementation | Benefit |
 |:--------|:--------------|:--------|
@@ -232,7 +202,7 @@ This project implements a **high-precision closed-loop position controller** for
 
 ---
 
-## 📥 Installation & Setup
+## Installation & Setup
 
 ### 🔧 Hardware Assembly
 
@@ -242,6 +212,7 @@ This project implements a **high-precision closed-loop position controller** for
    - Secure sensor board with custom 3D-printed bracket or standoffs
 
 2. **Wiring Instructions** *(Reference: Schematic_Diagram_for_project_ref.png)*
+
 ESP32-S3 GPIO21 ────► AS5600 SDA
 ESP32-S3 GPIO22 ────► AS5600 SCL
 ESP32-S3 3.3V ────► AS5600 VCC
@@ -259,7 +230,7 @@ L298N OUT1 ──────────► Motor Terminal 1
 L298N OUT2 ──────────► Motor Terminal 2
 
 
-### 💾 Firmware Flashing
+### Firmware Flashing
 
 ```bash
 # Clone the repository
@@ -276,9 +247,9 @@ pio run --target upload
 pio device monitor --baud 115200
 ```
 
-## 📈 Performance Analysis
+## Performance Analysis
 
-### 📊 Step Response Characteristics
+### Step Response Characteristics
 
 | Metric | Measured Value | Target Specification | Status |
 |:-------|:-------------:|:--------------------:|:------:|
@@ -288,7 +259,7 @@ pio device monitor --baud 115200
 | Steady-State Error | < 1° | < 2° | ✅ PASS |
 | Maximum Tracking Speed | 180°/sec | > 120°/sec | ✅ PASS |
 
-### 📉 Error Distribution Analysis
+### Error Distribution Analysis
 
 | Error Range | Occurrence Frequency | Cumulative Percentage |
 |:-----------:|:--------------------:|:---------------------:|
@@ -297,7 +268,7 @@ pio device monitor --baud 115200
 | 1.0° - 2.0° | ██████ (15%) | 95% |
 | > 2.0° | ██ (5%) | 100% |
 
-### 🔬 Frequency Domain Analysis
+### Frequency Domain Analysis
 
 | Parameter | Value | Interpretation |
 |:----------|:-----:|:--------------|
@@ -306,7 +277,7 @@ pio device monitor --baud 115200
 | Gain Margin | 8 dB | Robust to gain variations |
 | Resonance Peak | None | No oscillatory modes detected |
 
-### 📈 Disturbance Rejection
+### Disturbance Rejection
 
 | Disturbance Type | Recovery Time | Max Deviation |
 |:-----------------|:-------------:|:-------------:|
@@ -316,21 +287,21 @@ pio device monitor --baud 115200
 
 ---
 
-## 🚀 Future Improvements
+## Future Improvements
 
-### 🔜 Short-Term Roadmap (v1.1)
+### Short-Term Roadmap (v1.1)
 - [ ] Adaptive PID - Auto-tuning based on error magnitude and velocity
 - [ ] Velocity Feed-Forward - Improved trajectory tracking accuracy
 - [ ] Bluetooth/BLE Interface - Wireless control from mobile devices
 - [ ] Web Dashboard - Browser-based monitoring using WebSerial API
 
-### 📅 Medium-Term Roadmap (v2.0)
+### Medium-Term Roadmap (v2.0)
 - [ ] AS5048A Encoder - Upgrade to 14-bit (0.022° resolution)
 - [ ] Custom H-Bridge - Current sensing and stall detection
 - [ ] Trajectory Planner - Trapezoidal/S-curve velocity profiles
 - [ ] Multi-Motor Sync - Coordinated control of 2+ motors
 
-### 🔮 Long-Term Vision (v3.0)
+### Long-Term Vision (v3.0)
 - [ ] ROS2 Integration - Standard robotics middleware compatibility
 - [ ] System Identification - ML-based dynamic model estimation
 - [ ] Model Predictive Control - Advanced optimal control strategy
@@ -338,7 +309,7 @@ pio device monitor --baud 115200
 
 ---
 
-## 🎯 Conclusion
+## Conclusion
 
 This project successfully demonstrates a **high-precision closed-loop position control system** using ESP32-S3 and AS5600 encoder, achieving **<1° steady-state error**, **0.8s rise time**, and **5% overshoot**.
 
